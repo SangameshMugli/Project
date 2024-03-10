@@ -1,3 +1,5 @@
+// 1. [Variables] Declare different types of variables and print the type of each variable?
+
 let str = "Sangamesh"
 console.log(typeof str)
 
@@ -24,3 +26,14 @@ let func = function() {
 }
 console.log(typeof func)
 
+
+// output
+
+// string
+// number
+// boolean
+// undefined
+// object
+// object
+// true
+// function

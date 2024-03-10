@@ -1,3 +1,6 @@
+// 8. Implement string reversal. dont use builtin function
+
+
 function rev(str){
     let store=""
     for(let i=str.length-1;i>=0;i--)
@@ -9,3 +12,6 @@ function rev(str){
 }
 console.log(rev("sangu"))
 
+// output
+
+// ugnas

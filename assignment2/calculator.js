@@ -1,3 +1,5 @@
+// 2. Create a calculator to perform  sum, subraction, multiplication and division of 2 integers provided by user
+
 let operator= prompt("Enter Operator")
 let num1= parseFloat(prompt("enter 1st num"))
 let num2= parseFloat(prompt("enter 2nd num"))

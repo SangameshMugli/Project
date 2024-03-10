@@ -1,3 +1,5 @@
+// 5. Declare an array and sum of all values in an array using loops - for, while  — Use functions
+
 let array=[10,30,9,7,20,5]
 
 function sum(arr)
@@ -26,3 +28,8 @@ function sum1(arr)
 
 sum(array)
 sum1(array)
+
+// output
+
+// 81-for loop
+// 81-while loop

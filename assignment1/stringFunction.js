@@ -1,3 +1,5 @@
+// 7. Implement your own search function for strings. dont use builtin function
+
 let arr=["sangamesh","abhi","nikhil","rohit"]
 let count=0
 
@@ -19,3 +21,8 @@ function search(string)
     }
 }
 search("rohit")
+
+
+// output
+
+// rohit Name Founded 

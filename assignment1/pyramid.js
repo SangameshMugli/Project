@@ -1,3 +1,11 @@
+// 1. Generate * pattern to construct a pyramid
+//     *
+//    *** 
+//   *****
+//  *******
+// *********
+
+
 let n = 5;
 let string = "";
 
@@ -16,3 +24,14 @@ for (let i = 1; i<=n; i++)
   string += "\n";
 }
 console.log(string);
+
+
+
+
+// output
+//      *
+//     ***
+//    *****
+//   *******
+//  *********
+

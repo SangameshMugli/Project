@@ -1,3 +1,5 @@
+// 4. Declare an array and print all values in an array using loops - for, while — Use functions
+
 let array=[1,5,10,20,15,7,2]
 
 function printArray(arr)
@@ -19,3 +21,23 @@ function printArray1(arr)
 }
 printArray(array)
 printArray1(array)
+
+// output
+
+// for loop
+// 1
+// 5
+// 10
+// 20
+// 15
+// 7
+// 2
+
+// while loop
+// 1
+// 5
+// 10
+// 20
+// 15
+// 7
+// 2
