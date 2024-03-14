@@ -17,7 +17,7 @@ for (let i = 1; i<=n; i++)
     string += " ";
   }
 
-  for (let k = 0; k < 2 * i - 1; k++) 
+  for (let k = 0;  k < 2 * i - 1; k++) 
   {
     string += "*";
   }
