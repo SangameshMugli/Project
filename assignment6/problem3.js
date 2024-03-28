@@ -54,5 +54,5 @@ function arrayleaders(array)
 
 let a1=[16,17,4,3,5,2]
 let a2=[5,4]
-arrayleaders(a1)
-arrayleaders(a2)
+arrayleaders(a1)// output [17,4,2]
+arrayleaders(a2)// output [5,4]
