@@ -1,0 +1,249 @@
+BOOKSTORE DATABASE
+
+create database bookstore2;
+
+use bookstore2;
+
+create table books(
+book_id decimal(15) NOT NULL,
+title varchar(30) NOT NULL,
+author varchar(30) NOT NULL,
+isbn decimal(30) NOT NULL,
+publisher varchar(30) NOT NULL, 
+publication_year decimal(10) NOT NULL,
+genre varchar(30) NOT NULL,
+price decimal(10,2) NOT NULL,
+constraint id_pk primary key(book_id)
+);
+
+select * from books;
+insert into books (book_id,title,author,isbn,publisher,publication_year,genre,price) values
+(1, 'To Kill a Mockingbird', 'Harper Lee', 9780060935467, 'Harper Perennial', 1960, 'Classic', 14.99),
+(2, '1984', 'George Orwell', 9780451524935, 'Plume', 1949, 'Dystopian', 9.99),
+(3, 'The Great Gatsby', 'F. Scott Fitzgerald', 9780743273565, 'Scribner', 1925, 'Novel', 15.00),
+(4, 'The Catcher in the Rye', 'J.D. Salinger', 9780316769488, 'Little, Brown and Company', 1951, 'Literature', 8.99),
+(5, 'Sapiens: A Brief History', 'Yuval Noah Harari', 9780062316097, 'Harper', 2011, 'Non-fiction', 22.00),
+(6, 'Life of Pi', 'Yann Martel', 9780156027328, 'Harcourt', 2001, 'Adventure fiction', 12.99),
+(7, 'The Alchemist', 'Paulo Coelho', 9780061122415, 'HarperOne', 1988, 'Philosophical novel', 16.99),
+(8, 'Brave New World', 'Aldous Huxley', 9780060850524, 'Harper Perennial', 1932, 'Dystopian', 14.99),
+(9, 'The Road', 'Cormac McCarthy', 9780307387899, 'Vintage', 2006, 'Post-apocalyptic', 14.95),
+(10, 'Gone Girl', 'Gillian Flynn', 789745956452, 'Crown Publishing Group', 2012,'Thriller',11.98);
+
+-- a. Find all books by a specific author:
+select * 
+from books 
+where author='harper lee';
+
+-- b. Get books within a specific price range:
+select *
+from books 
+where price between 6 and  14;
+
+-- c. Search for books by title:
+select * 
+from books 
+where title='1984';
+
+-- d. List all distinct genres available in the bookstore:
+select distinct genre
+from books ;
+
+-- e. Find the most expensive book in each genre:
+select genre, max(price)
+from books 
+group by genre;
+
+-- f. Count the number of books by each author:
+select author, count(*)
+from books 
+group by author;
+
+
+create table inventory(
+inventory_id decimal(10) NOT NULL,
+book_id decimal(15) NOT NULL,
+quantity decimal(10) NOT NULL,
+location varchar(50) NOT NULL,
+constraint in_id_pk primary key(inventory_id),
+constraint bk_id_fk foreign key(book_id) references books(book_id)
+);
+drop table inventory;
+select * from inventory;
+
+insert into inventory (inventory_id,book_id,quantity,location) values
+(1, 1, 35, 'Shelf A1');
+
+INSERT INTO Inventory (inventory_iD, book_iD, quantity, location) VALUES
+(2, 2, 20, 'Shelf A1'),
+(3, 3, 80, 'Shelf B1'),
+(4, 4, 25, 'Shelf B2'),
+(5, 5, 30, 'Shelf C1'),
+(6, 6, 40, 'Shelf C2'),
+(7, 7, 50, 'Shelf D1'),
+(8, 8, 45, 'Shelf D2'),
+(9, 9, 10, 'Shelf E1'),
+(10, 10, 5, 'Shelf E2');
+
+create table customer(
+customer_id decimal(10) NOT NULL,
+first_name varchar(30) NOT NULL,
+last_name varchar(30) NOT NULL,
+email varchar(40) NOT NULL,
+phone int(10) NOT NULL,
+address varchar(60) NOT NULL,
+constraint cus_id_pk primary key(customer_id)
+);
+
+select * from customer;
+
+INSERT INTO Customer (customer_id, first_name, last_name, email, phone, address) VALUES
+(1, 'John', 'Doe', 'john.doe@example.com', '123456890', '123 Main St'),
+(2, 'Jane', 'Smith', 'jane.smith@example.com', '98765432', '456 Elm St'),
+(3, 'Alice', 'Johnson', 'alice.johnson@example.com', '55512345', '789 Oak Ave'),
+(4, 'Bob', 'Brown', 'bob.brown@example.com', '22233344', '321 Pine Rd'),
+(5, 'Emily', 'Davis', 'emily.davis@example.com', '77788999', '654 Maple Ln');
+
+select * from customer;
+-- Update customer contact details:
+update customer
+set phone=96385270 ,email='abc@gmail.com'
+where customer_id=5;
+
+-- Find all customers in a specific location:
+select distinct * ,address 
+from customer
+where address like '% st';
+
+-- Retrieve complete customer information by email:
+select *
+from customer
+where email='emily.davis@example.com';
+
+-- Find customers who have not made any purchases within the last year:
+select *
+from customer c
+join sales s
+on c.customer_id=s.customer_id
+where sale_date not between '01/01/23' and '31/12/23';
+
+
+
+-- List all customers who have spent more than a specific amount:
+select *
+from customer c
+join sales s
+on c.customer_id=s.customer_id
+where total_price>15.00;
+
+-- Customers with the most purchases in terms of quantity:
+select *
+from customer 
+where customer_id in (select customer_id
+					from sales
+					where quantity in(select max(quantity)
+					                   from sales));
+                              
+
+
+
+create table sales(
+sale_id decimal(10) NOT NULL,
+book_id decimal(15) NOT NULL,
+customer_id decimal(10) NOT NULL,
+quantity decimal(10) NOT NULL,
+sale_date date NOT NULL,
+total_price decimal(10,2) NOT NULL,
+constraint sale_id_pk primary key(sale_id),
+constraint book_id_fk foreign key(book_id) references books(book_id),
+constraint cu_id_fk foreign key(customer_id) references customer(customer_id)
+);
+select * from sales;
+
+INSERT INTO sales (sale_id, book_id, customer_id, quantity, sale_date, total_price)
+VALUES (101, 1, 1, 1, '6/10/23', 19.99);
+
+update sales
+set quantity=16
+where sale_id=102;
+
+INSERT INTO sales (sale_id, book_id, customer_id, quantity, sale_date, total_price)
+VALUES (106, 2, 2, 10, '7/10/23', 186.99);
+INSERT INTO sales (sale_id, book_id, customer_id, quantity, sale_date, total_price)
+VALUES (107, 3, 4, 9, '7/10/23', 166.99);
+
+
+
+select * from sales;
+
+update sales
+set sale_date='2023-10-15'
+where sale_id=106;
+update sales
+set sale_date='2023-11-07'
+where sale_id=107;
+
+
+-- View all sales on a particular date
+select *
+from sales
+where sale_date='2023-11-07';
+
+-- Calculate total sales for a specific book:
+select sum(quantity)
+from sales
+where book_id=2;
+
+-- List all sales made to a particular customer:
+select *
+from sales
+where customer_id=2;
+
+-- Determine the average sale amount per customer:
+select customer_id, avg(total_price)
+from sales
+group by customer_id;
+      -- 0R 
+select c.first_name,avg(total_price)
+from customer c
+join sales s
+on c.customer_id=s.customer_id
+group by c.customer_id;
+
+-- List the top 5 best-selling books:
+SELECT b.title, sum(s.quantity) as total_books_sold
+FROM books b
+JOIN sales s
+ON b.book_id = s.book_id
+GROUP BY b.book_id
+ORDER BY total_books_sold DESC
+LIMIT 5;
+
+-- Total revenue per Day, Week, Month, Year
+SELECT
+    DATE_FORMAT(sale_date, '%Y-%m-%d') AS day,
+    SUM(total_price) AS revenue_per_day,
+    DATE_FORMAT(sale_date, '%x-%v') AS week,
+    SUM(total_price) AS revenue_per_week,
+    DATE_FORMAT(sale_date, '%Y-%m') AS month,
+    SUM(total_price) AS revenue_per_month,
+    DATE_FORMAT(sale_date, '%Y') AS year,
+    SUM(total_price) AS revenue_per_year
+FROM sales
+GROUP BY day, week, month, year;
+
+
+
+
+
+
+
+ 
+
+
+-- 
+
+
+
+
+
+
