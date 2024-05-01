@@ -1,0 +1,114 @@
+mkdirLinux commands
+
+1> pwd->present working directory
+
+2> ./ -> current directory
+
+3> ../ -> previous directory
+
+4> cd ../ -> change directory
+
+5> cd ../ ../ -> two steps back
+
+6> mkdir <filename> -> create directory
+  -> mkdir <dir1 dir2 dir3> -> creates 3 directory
+  -> mkdir -p <filesname> -> create nested directory
+  -> mkdir -p <dir1/dir2/dir3> -> creates nested directory
+
+7> touch <filename> -> creates a file 
+
+8> ls -> list all files and directories
+  -> ls -l & ls -lt -> list all the information about files and directories
+  -> ls -ltr -> reverse the list(sorting)
+  -> ls -lrt -> descending order with timestamp
+  -> ls -lh -> human readable size
+  -> ls -la -> show all the hidden files
+
+9> man -ls -> list of commands used for ls
+  -> man -pwd ->  list of commands used for pwd
+  -> q -> exit from man command
+
+10> rm <filename> -> to delete file
+
+11> rmdir <directoryname> -> to delete directory
+   -> rm -rf <directoryname> -> delete directory along all the files present in directory
+
+12> cd -/ -> goes to home directly (-/ -> Tilda)
+
+13> cp <filename> -> copy file
+    cp -r <filename> -> copy directory
+
+14> clear -> clear the screen
+
+15> cat <filename> -> open the context in the file
+
+16> cat -n <filename> -> open the context in the file along with the line number
+
+17> mv <filename> <to where filename> -> move file
+     ex: mv rcb ipl/ 
+   -> mv <filename> <to where filename>/<rename the file> -> move file and rename the file
+       ex: mv rcb ipl/csk
+
+18> echo "message" -> to print message on terminal
+   -> echo -e "hello \nworld" -> to print message in new line (world will print in next line) 
+   -> echo "hi iam in the fsdbatch" > batch3 -> creates the file batch3 and the written context will be pushed in batch3(">"-> overwrite)
+   -> echo "hi iam in the fsdbatch" >> batch3 -> append(">>")
+   -> echo $home -> print home environment variable
+   -> export <variablename>=xyz -> set environment variable
+     ex: export mysql=102.231.221.10
+   -> printenv -> print all the environment variables
+   -> printenv <variable name> ->  print environment variables
+   -> unset <variablename> -> delete the environment variable
+      ex: unset mysql 
+   -> vi .bashrc ->  make the environment variable as global
+
+19> wc <filename> -> to check number of lines, words, characters
+   -> wc -l <filename> -> to check only number of lines
+   -> wc -w <filename> -> to check only number of words
+   -> wc -c <filename> -> to check only number of characters
+  
+20> ls -l| wc -l -> counts the files
+
+21> vi editor -> to create and view files
+   -> vi <filename> -> create the file and edit the file
+   -> i -> insert in the file
+   -> esc -> come out from insert
+   -> :w -> save the file
+   -> :wq -> save and quit the file
+   -> :q! -> it wont save the file, it will just quit the file
+
+22> tail <filename> -> print last 10 lines
+   ->tail -15 <filename> -> print last 15 lines
+   ->tail -f <filename> -> continuously monitor the file
+
+23> less <filename> -> print data upto the screenfit
+   -> less -10 <filename> -> print data upto the screenfit and then prints only 10 lines
+
+24> head <filename> -> prints starting 10 lines
+
+25> du -sh <filename> -> gets file size
+
+26> df -lh <filename> -> get details about the system size data
+
+27> chmod 777 <filename> -> set permission for all owners, groups, others
+   -> chmod u+rwx <filename> -> set permission for only owners
+   -> chmod u-rwx <filename> -> deny permission for only owners
+   -> chmod g+rwx <filename> -> set permission for only groups
+   -> chmod g-rwx <filename> -> deny permission for only groups
+   -> chmod 0+rwx <filename> -> set permission for only others
+   -> chmod 0-rwx <filename> -> deny permission for only others
+   -> chmod ugo+rwx <filename> -> set permission for all
+   -> chmod ug0-rwx <filename> -> deny permission for all
+
+28> who -> how many users are logged into the server
+
+29> whoami -> ec2user name (current username)
+
+30> id -> to see the id of the user
+
+31> id root -> to see details about root
+
+32> sudo su -> root user
+   
+
+
