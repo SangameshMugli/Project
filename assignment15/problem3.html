@@ -1,0 +1,61 @@
+<!-- Q3>create registration form structure -->
+<html>
+  <head>
+    <title>Registration form</title>
+    
+  </head>
+
+  <body>
+    <form action="">
+      <div class="container">
+        <h1>Registration Form</h1>
+        <p>Kindly fill the below form to register</p>
+        <label for="firstname">First Name</label>
+        <input type="text" placeholder="enter first name" required />
+        <br />
+        <br />
+        <label for="lastname">Last Name</label>
+        <input type="text" placeholder="enter last name" required />
+        <br /><br />
+        <label for="dob">Date Of Birth</label>
+        <input type="date" name="dob" id="dob">
+        <br><br>
+        <label for="gender">Gender</label>
+        <input type="radio" name="selection" value="male">male
+        <input type="radio" name="selection" value="female">female
+      
+        <br><br>
+        <label for="email">Email</label>
+        <input
+          type="email"
+          name="email"
+          id="email"
+          placeholder="enter emailId"
+        />
+
+        <br /><br />
+        <label for="password">Password</label>
+        <input
+          type="password"
+          name="password"
+          id="password"
+          placeholder="enter password"
+        />
+        <br /><br />
+        <label for="Confirm password">Confirm Password</label>
+        <input
+          type="password"
+          name="cpassword"
+          id="cpassword"
+          placeholder="Reenter password"
+        />
+        <br /><br />
+        <button type="submit">Register</button>
+      </div>
+
+      <div>
+        <p>Already had an account? <a href="#">Login</a></p>
+      </div>
+    </form>
+  </body>
+</html>
