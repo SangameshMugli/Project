@@ -1,0 +1,171 @@
+.container{
+   /* display: grid; */
+   
+}
+.item{
+   border: 0px solid black;
+   border-collapse: collapse;
+   
+}
+#header{
+   /* grid-area: header; */
+   height: 50px;
+   width: 100%;
+   background-color: rgb(255,255,255);
+   display: grid;
+   grid-template-columns: 0.5fr 1fr 1fr   ;
+   
+   
+
+}
+#header img{
+   margin-left: 100px;
+   height: 50px;
+   width: auto;
+}
+#header input{
+   margin-top: 10px;
+   margin-bottom: 10px;
+   
+   
+}
+#header select{
+   margin: 10px 300px;
+   margin-right: 100px;
+   /* margin-left: 10px;
+   margin-top: 10px;
+   margin-bottom: 10px; */
+   width: 100px;
+   border: none
+   
+   
+}
+#navbar{
+   /* grid-area: navbar; */
+   display: grid;
+   grid-template-columns: repeat(2,1fr);
+   height: 40px;
+   width: 100%;
+   background-color: rgb(245,245,245);
+   border-bottom: 0.5px solid rgb(229, 229, 229);
+}
+#navbar .margin{
+   margin: 10px 100px;
+   
+}
+#navbar .endmargin{
+   margin-left: 490px;
+   
+}
+
+#navbar a{
+   color: black;
+   text-decoration: none;
+   padding: 10px;
+}
+#navbar a:hover{
+   color: orange;
+   
+}
+   
+
+#section{
+   /* grid-area: section; */
+   height: 600px;
+   width: 100%;
+   background-color: rgb(245,245,245);
+   /* display: grid;
+   grid-template-columns: 1fr 1fr 1fr; */
+   display: flex;
+   flex-direction: row;
+   /* flex-direction: wrap; */
+   justify-content: space-around;
+   align-items: center;
+  
+   
+}
+#section div .kgf{
+   height: 350px;
+   width: 250px;
+   background-color: black;
+   border: 1px solid black;
+   border-radius: 10px;
+}
+#section div .Raajakumara{
+   height: 350px;
+   width: 250px;
+   background-color: black;
+   border: 1px solid black;
+   border-radius: 10px;
+}
+#section div .Kaatera{
+   height: 350px;
+   width: 250px;
+   background-color: black;
+   border: 1px solid black;
+   border-radius: 10px;
+}
+#section div img{
+   height: 350px;
+   width: 250px;
+   border-radius: 10px;
+   box-shadow: 5px 10px;
+}
+#section div img:hover{
+   cursor: pointer;
+   height: 360px;
+   
+}
+#section div h3{
+   font-family: Roboto;
+   font-size: 18px;
+   font-weight: 500;
+
+}
+#section div p{
+   font-family: Roboto;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+#footer{
+   /* grid-area: footer; */
+   height: 40px;
+   width: 100%;
+   background-color: rgb(49,48,53);
+}
+#footer {
+   display: flex;
+
+   justify-content: center;
+}
+#footer img{
+   /* grid-area: footer; */
+   height: 40px;
+   width: 100px;
+   
+}
+
+@media screen and (max-width:1000px) {
+   #header{
+      grid-template-columns: repeat(3 0.1fr);
+      width: 100%;
+   }
+
+   #navbar {
+      
+       height: auto;
+       grid-template-columns: 0.1fr 0.1fr 0.1fr 0.1fr;
+       width: 100%;
+   }
+
+   #section{
+      flex-direction: column;
+      height: 1500px;
+      width: 100%;
+   }
+   #footer{
+
+   }
+
+}
