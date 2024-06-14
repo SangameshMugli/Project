@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <title>Document</title>
+    </head>
+    <body>
+        <button id="btn-1">Say Hello</button>
+    </body>
+
+    <script>
+        console.log("Hello world");
+        console.log(document);
+
+        let button =document.getElementById('btn-1')
+
+        button.addEventListener('dblclick',function(){
+            let body=document.querySelector("body")
+            let paramElem=document.createElement("p") //it will create a element <P> tag
+            paramElem.innerText="Hello world"
+            body.append(paramElem)
+        })
+          console.log("Hello world2");
+
+       
+    </script>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+
+        }
+
+        .main_container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url("image.png");
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            height: 80vh;
+
+        }
+        .search_container{
+            height: 20vh;
+            /* background-color: rgb(12,33,10); */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+
+        }
+        .searchField{
+            flex-grow: 1.5;
+            border: 4px solid black;
+            border-radius: 10px;
+            margin-left: 100px;
+            margin-right: 10px;
+            height: 5vh;
+        }
+        .search{
+            flex-grow: 0.5;
+            border: 4px solid black;
+            border-radius: 10px;
+             margin-right: 100px;
+            height: 5vh; 
+            cursor: pointer;
+        }
+        
+        .weather{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+        }
+        .search:hover{
+            background-color: skyblue;
+            
+        }
+        .weather:hover{
+            cursor: pointer;
+        }
+
+        @media screen and (max-width:1000px) {
+            .search{
+                height: 3vh;
+                font-size: 10px;
+            }
+
+            .searchField{
+                height: 3vh;
+                font-size: 10px;
+            }
+        }
+        
+        
+    </style>
+</head>
+<body>
+    <!-- <div>
+        <input type="text" placeholder="Search Location" class="searchField">
+        <button class="search">Search</button>
+    </div> -->
+
+    <div class="main_container">
+        <div class="weather">
+            <div class="temp">20&deg;C </div>
+            <div class="location">
+                <p>
+                    location
+                </p>
+                <span>Time and Date</span>
+            </div>
+        </div>
+
+    </div>
+    <div class="search_container">
+        <input type="text" placeholder="Search Location" class="searchField">
+        <button class="search">Search</button>
+    </div>
+    
+</body>
+
+<script>
+    let searchBtn=document.querySelector('.search')
+    let searchField=document.querySelector('.searchField')
+    let temp_Field=document.querySelector('.weather .temp')
+    let location_field=document.querySelector('.weather .location p')
+    let Time_field=document.querySelector('.weather .location span')
+    async function getWeatherinfo(url) {
+  const response = await fetch(url);
+  const info = await response.json();
+  console.log(info);
+  temp_Field.innerText= info.current.temp_c
+  console.log(info.current.temp_c);
+  location_field.innerText=info.location.name
+  console.log(info.location.name);
+  Time_field.innerText=info.location.localtime
+  console.log(info.location.localtime);
+}
+    searchBtn.addEventListener('click',function(e){
+        let searchValue=searchField.value
+        console.log(searchValue);
+        let url=`http://api.weatherapi.com/v1/current.json?key=9714a6d5aa274a56951132909241006&q=${searchValue}&aqi=no`
+        getWeatherinfo(url)
+    })
+</script>
+</html>

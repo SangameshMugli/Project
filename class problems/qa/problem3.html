@@ -1,0 +1,33 @@
+<!-- Write a JavaScript function that creates a list (<ul>) with three list items (<li>), each containing the text "Item 1", "Item 2", and "Item 3". Append this list to an element with the ID list-container. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+<body>
+    <div id="list-container">
+
+    </div>
+
+    
+</body>
+<script>
+    let listContainer=document.getElementById('list-container')
+    let unordered_list=document.createElement('ul')
+    
+    for(let i=1;i<=3;i++){
+        let list=document.createElement('li')
+        list.innerText='item'+i
+        unordered_list.appendChild(list)
+        console.log(unordered_list);
+    }
+
+    // document.body.appendChild(unordered_list)
+
+    listContainer.appendChild(unordered_list)
+    
+
+</script>
+</html>

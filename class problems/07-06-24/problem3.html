@@ -1,0 +1,62 @@
+<html>
+    <head>
+        <title>Box</title>
+        <style>
+            *{
+                box-sizing: border-box;
+                
+            }
+            body{
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-around;
+                padding-top: 5rem;
+            }
+            .orange{
+                background-color: orange;
+                box-shadow: 0px 0px 6px 5px;
+            }
+
+            .white{
+                background-color: whitesmoke;
+                box-shadow: 0px 0px 6px 5px;
+            }
+            .green{
+                background-color: green;
+                box-shadow: 0px 0px 6px 5px;
+            }
+            .card{
+                border: 1px solid black;
+                height: 10rem;
+                width: 10rem;
+                margin: 2rem;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="card" data-color="orange"></div>
+        <div class="card" data-color="white"></div>
+        <div class="card" data-color="green"></div>
+        <div class="card" data-color="orange"></div>
+        <div class="card" data-color="white"></div>
+        <div class="card" data-color="green"></div>
+        <div class="card" data-color="orange"></div>
+        <div class="card" data-color="white"></div>
+        <div class="card" data-color="green"></div>
+        <div class="card" data-color="orange"></div>
+    </body>
+    <script>
+        let cardslist=document.querySelectorAll('.card')
+        console.log(cardslist);
+
+      for(let i=0;i<cardslist.length;i++){
+            cardslist[i].addEventListener('dblclick',function(e){
+                console.log("double clicked");
+
+                console.log(e.target);
+                console.log(e.target.getAttribute('data-color'));
+                e.target.classList.add(e.target.getAttribute('data-color'))
+            })
+        }
+    </script>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./stylesheet.css" />
+    <script
+      src="https://kit.fontawesome.com/8ec4f58cf7.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <nav class="toolbox-cont">
+      <div class="toolbox-task-cont">
+        <div class="lightpink task-state"></div>
+        <div class="lightgreen task-state"></div>
+        <div class="lightblue task-state"></div>
+        <div class="black task-state"></div>
+      </div>
+      <div class="action-btn-cont">
+        <div class="add-btn">
+          <i class="fa-solid fa-plus"></i>
+        </div>
+        <div class="remove-btn">
+          <i class="fa-solid fa-xmark"></i>
+        </div>
+      </div>
+    </nav>
+
+    <div class="task-creator">
+      <textarea class="text-cont" placeholder="Enter your Task"></textarea>
+
+      <div class="task-state-list">
+        <div class="lightpink task-state"></div>
+        <div class="lightgreen task-state"></div>
+        <div class="lightblue task-state"></div>
+        <div class="black task-state"></div>
+        <button class="create-ticket">create</button>
+      </div>
+    </div>
+    <div class="ticket-cont">
+      <!-- <div class="ticket">
+        <div class="ticket-color"></div>
+        <div class="ticket-id"></div>
+        <div class="ticket-desc"></div>
+      </div> -->
+    </div>
+  </body>
+
+  <script src="https://unpkg.com/shortid-dist@1.0.5/dist/shortid-2.2.13.min.js"></script>
+
+  <script>
+    let addBtn = document.querySelector(".add-btn");
+    let taskCreator = document.querySelector(".task-creator");
+    let task_state_colors = document.querySelectorAll(
+      ".task-state-list .task-state"
+    );
+    let createbtn = document.querySelector(".create-ticket");
+    let textcont = document.querySelector(".text-cont");
+    let ticketCont = document.querySelector(".ticket-cont");
+    let taskCreatorState = false;
+    let ticket_color = "lightpink";
+
+    addBtn.addEventListener("click", function (e) {
+      // taskCreator.style.display='none'
+      taskCreatorState = !taskCreatorState;
+      if (taskCreatorState === true) {
+        taskCreator.style.display = "none";
+      } else {
+        taskCreator.style.display = "flex";
+      }
+    });
+
+    for (let i = 0; i < task_state_colors.length; i++) {
+      task_state_colors[i].addEventListener("click", function (event) {
+        console.log("Task color has been clicked");
+
+        //reset
+        for (let i = 0; i < task_state_colors.length; i++) {
+          task_state_colors[i].classList.remove("active");
+        }
+        event.target.classList.add("active");
+        ticket_color = event.target.classList[0];
+      });
+    }
+    createbtn.addEventListener("click", function (e) {
+      let id=shortid()
+      console.log("i am created");
+      console.log(ticket_color);
+      console.log(textcont.value);
+      let ticket = document.createElement("div");
+      ticket.classList.add('ticket')
+
+      ticket.innerHTML = `
+    <div class="ticket-color ${ticket_color}"></div>
+        <div class="ticket-id " >${id}</div>
+        <div class="ticket-desc ">${textcont.value}</div>
+    `;
+    taskCreator.style.display = "none";
+     taskCreatorState = false;
+     ticketCont.append(ticket)
+     ticket_color='lightpink'
+
+    });
+  </script>
+</html>
