@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let teacher1 = {
+    firstName: "abc",
+    lastName: "xyz",
+    age: 24,
+    printName: function (){
+        console.log(this.lastName);
+    }
+};
+
+let teacher2 = {
+    firstName: "efg",
+    lastName: "uvw",
+    age: 25
+};
+
+
+teacher1.printName()
+teacher1.printName.call(teacher2)
+
+//function borrowing
+function chooseSub(sub1, sub2) {
+    // console.log(this);
+    return `${this.firstName} engages in subjects ${sub1} and ${sub2}`;
+}
+
+console.log(chooseSub.call(teacher1,'English', 'Economics'));
+
+console.log(chooseSub.call(teacher2,['English', 'Economics']));
+
+console.log(chooseSub.apply(teacher2,['English', 'Economics']));
+
+
+//bind
+
+let bindedTeacherFunc=chooseSub.bind(teacher2)
+
+console.log(bindedTeacherFunc('English','Economics'));
+
+
+
+
+
+</script>
+</html>

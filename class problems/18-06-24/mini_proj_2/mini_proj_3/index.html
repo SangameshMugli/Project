@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+        .container{
+            position: absolute;
+            top: 100px;
+            left: 650px;
+            
+        }
+        .star{
+            font-size: 50px;
+            cursor: pointer;
+            
+        }
+        .star-color{
+            color: gold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Star Component</h1>
+        <div class="star-container">
+            <span class="star" data-pos="1">&#9733</span>
+            <span class="star" data-pos="2">&#9733</span>
+            <span class="star" data-pos="3">&#9733</span>
+            <span class="star" data-pos="4">&#9733</span>
+            <span class="star" data-pos="5">&#9733</span>
+        </div>
+        <h2>RatingCount &#8594 <span id="count">0</span></h2>
+    </div>
+</body>
+<script>
+    let starlist=document.querySelectorAll(".star")
+
+    for(let i=0;i<starlist.length;i++){
+        starlist[i].addEventListener('click',function(e){
+            let pos=parseInt(e.target.getAttribute('data-pos'))
+
+            //reset the star component
+            for(let j=0;j<starlist.length;j++){
+                starlist[j].classList.remove('star-color')
+            }
+
+
+            for(let j=0;j<pos;j++){
+                starlist[j].classList.add('star-color')
+            }
+
+        })
+    }
+</script>
+</html>

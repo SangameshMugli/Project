@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Debouncing</title>
+  </head>
+  <body>
+    <input type="text" />
+  </body>
+  <script>
+    let count = 0;
+    //mimick the network function call
+    function networkCall() {
+      console.log("Network Request ->", count);
+      count++;
+    }
+    function throttle(work,delay){
+        let flag=true
+
+        function innerFunction(){
+            if(flag){
+                work()
+                flag=false
+                setTimeout(()=>{
+                    flag=true
+
+                },delay)
+            }
+        }
+        return innerFunction
+    }
+    let inputField = document.querySelector("input");
+    let myFunc=throttle(networkCall,3000)
+    inputField.addEventListener("keydown", myFunc);
+  </script>
+</html>

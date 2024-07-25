@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let person1={
+        name:"Ashwin",
+        age:24,
+
+        address:{
+            city:"Bengaluru",
+            pincode:'560066'
+        }
+    }
+
+    let person2=person1
+
+    console.log(person2);
+
+    person1.name='vinay'
+    console.log(person2);
+
+
+    // shallow copy
+    // // ... (3 dots) refers to spread opertor
+    // spread operator creates a separate copy but the nested level doesnot do the same copy,
+    // if we change values in object it doesnot work,
+    // but if we change the value in nested level it will change the value to wt we have given
+
+    let person3={...person1}
+
+    console.log(person3);
+
+    person1.name='Ajit'
+    console.log(person3);
+
+    person1.address.city='Bidar'
+    console.log(person3);
+
+
+    // Deep copy
+    // deep copy will copy all the object even nested level values as fresh ,if we change the values in person1,
+    // it doesnot effect the person4
+
+    let person4=JSON.parse(JSON.stringify(person1))
+    console.log(person4);
+
+    person1.address.city='Bellary'
+    console.log(person4);//doesnot changes the value
+    console.log(person1);
+
+
+</script>
+</html>

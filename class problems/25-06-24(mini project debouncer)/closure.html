@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>closure</title>
+</head>
+<body>
+    <h1>What is Closure?</h1>
+    <p>closure concepts defines the below points mentioned :
+        <ol>
+            <li>Inner function will be enclosed with the references to its surrounding 
+                state where it was declared.</li>
+            <li>This references to surrounding state will allow function to access and 
+              manipulate those references even after the outer function scope has finished executing.
+            </li>
+            <li>Aclosure gives us access to outerfunctions scope from an inner function</li>
+
+            <li>OR</li>
+            <li>Closure: The innerfunction forms a closure. A closure is a function that retains
+             access to its lexical scope, even when the function is executed outside that scope.</li>
+
+             <li>lexical scope means that a function's scope is defined by its location within 
+                the source code, and nested functions have access to variables declared in their outer scopes.</li>
+
+        
+        </ol>
+    </p>
+</body>
+<script>
+    function outerfunction(){
+        let a=10
+
+        function innerfunction(){
+            let b=20
+            return a+b
+        }
+        return innerfunction
+    }
+
+    let myfunction=outerfunction()
+    console.log(myfunction());
+
+     console.log(outerfunction());
+
+</script>
+</html>

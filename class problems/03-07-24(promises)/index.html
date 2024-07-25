@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>promise</title>
+</head>
+<body>
+    <button>click me</button>
+</body>
+<script>
+
+    //promise 
+    // Promise is an object that represents the eventual completion (or failure) of an asynchronous 
+    // operation and its resulting value. Promises provide a way to handle asynchronous operations more
+    //  gracefully and avoid callback hell.
+    let btn=document.querySelector('button')
+
+
+    let score=95
+
+    const myPromise=new Promise((resolve,reject)=>{
+        let condition=score>90
+
+        if(condition){
+            resolve("Buy a new bicycle")
+        }else{
+            reject("score is not acceptable")
+        }
+    })
+
+    myPromise.then(results=>{
+        console.log("I will go for a ride with my friends");
+    }).catch(error=>{
+        console.log("I will sit and read");
+    }).finally(()=>{
+        console.log("I will play cricket");
+    })
+
+
+    function getMyData(url){
+        let myPromises=new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+                let data='I am the output from network call'
+                if(data){
+                    resolve(data)
+                }else{
+                    reject("data is not present")
+                }
+            },2000)
+        })
+        return myPromises
+    }
+
+    getMyData('https://payment_link')
+    .then(result=>{
+        console.log("this is first result");
+        let mySecond=getMyData('https://generating_bill')
+        return mySecond
+    }).then(result=>{
+        console.log("this is second result");
+        let myThird=getMyData('https://acknowledge')
+        return myThird
+
+    }).catch(error=>{
+        console.log("payment failed");
+    }).finally(()=>{
+        console.log("Payment successful");
+    })
+
+</script>
+</html>

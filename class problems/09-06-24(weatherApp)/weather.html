@@ -108,6 +108,7 @@
     let temp_Field=document.querySelector('.weather .temp')
     let location_field=document.querySelector('.weather .location p')
     let Time_field=document.querySelector('.weather .location span')
+    
     async function getWeatherinfo(url) {
   const response = await fetch(url);
   const info = await response.json();

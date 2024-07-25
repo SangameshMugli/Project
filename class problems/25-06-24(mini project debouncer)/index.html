@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            height: 150px;
+            width: 250px;
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        i m a div
+    </div>
+
+    <button>Stop the change</button>
+</body>
+<script>
+    // function printName(){
+    //     console.log("I am opqtech");
+    // }
+    // setTimeout(printName,5000)
+
+    //or
+    
+    //  let id= setTimeout(function(){
+    //     console.log("I am the output from set Timeout");
+    //   },10000)
+    
+    //   clearTimeout(id)
+
+    let btn=document.querySelector('button')
+    
+    function startChangeInWidth(){
+        let target=document.querySelector('div')
+        target.style.width='350px'
+        target.style.backgroundColor='red'
+    }
+    let id=setTimeout(startChangeInWidth,5000)
+    
+    btn.addEventListener('click',function(){
+        console.log("Button is clicked");
+        clearTimeout(id)
+    })
+</script>
+</html>

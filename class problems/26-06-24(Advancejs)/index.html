@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Constructor Function</h1>
+<h2 style="font-size: 30px;">This is an constructor function Which creates javascript object without class</h2>
+
+    <p style="font-size: 30px; font-weight: lighter;">function Car(nameParam,colorParam,topspeedParam){ <br>
+        this.name=nameParam <br>
+        this.color=colorParam <br>
+        this.topSpeed=topspeedParam <br>
+    
+        this.drive=function(){ <br>
+            console.log(`I am driving a ${this.name} car at a speed of ${this.topSpeed } and the color is ${this.color}`); <br>
+        } <br>
+
+        let Car1=new Car("ferrari","red","200kmph") <br>
+        console.log(Car1); <br>
+        Car1.drive();
+    
+    }</p>
+
+
+    <h1>PROTOTYPE</h1>
+</body>
+<!-- <script src="./constructor.js"></script> -->
+<script src="./prototype.js"></script>
+</html>
